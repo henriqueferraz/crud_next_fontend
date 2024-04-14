@@ -12,11 +12,26 @@ import { Button } from "@/components/ui/button"
 import { IoTrashOutline } from "react-icons/io5";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { RxUpdate } from "react-icons/rx";
+import { useState } from "react";
+import { InsertUser } from "./checkout/dialog";
 
 export const TableCrud = () => {
+
+    const [buttonOpen, setButtonOpen] = useState(false)
+
     return (
         <div className=" text-xl">
-            <Button className="w-full hover:bg-slate-300" variant="secondary">Incluir Usuário</Button>
+            <Button
+                onClick={() => setButtonOpen(true)}
+                className="w-full hover:bg-slate-300"
+                variant="secondary"
+            >
+                Incluir Usuário
+            </Button>
+            <InsertUser
+                open={buttonOpen}
+                onOpenChange={setButtonOpen}
+            />
             <Table>
                 <TableCaption>A lista das ultimas atualizações.</TableCaption>
                 <TableHeader>
